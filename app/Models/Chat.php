@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Database\Factories\ChatFactory;
@@ -7,13 +9,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
+/**
+ * @property int $id
+ * @property Carbon $updated_at
+ * @property Collection $users
+ */
 class Chat extends Model
 {
     /** @use HasFactory<ChatFactory> */
     use HasFactory;
 
-    protected $fillable = ['owner_id', 'name'];
 
     public function messages(): HasMany
     {
@@ -22,6 +30,6 @@ class Chat extends Model
 
     public function users(): belongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'chat_user');
     }
 }
