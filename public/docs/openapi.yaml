@@ -1,0 +1,288 @@
+openapi: 3.0.3
+info:
+  title: Chat
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/login:
+    post:
+      summary: ''
+      operationId: postApiV1Login
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The <code>email</code> of an existing record in the users table.'
+                  example: accusantium
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: 'zZ#fW|S^*Ut95DMua,'
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/register:
+    post:
+      summary: ''
+      operationId: postApiV1Register
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: flossie69@example.net
+                  nullable: false
+                firstName:
+                  type: string
+                  description: 'Must be at least 1 character. Must not be greater than 50 characters.'
+                  example: lzjswcdcmaqrjnzqbis
+                  nullable: false
+                lastName:
+                  type: string
+                  description: 'Must be at least 1 character. Must not be greater than 50 characters.'
+                  example: qqugdsutnolgmzgkagcvfazgd
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: amet
+                  nullable: false
+              required:
+                - email
+                - firstName
+                - lastName
+                - password
+      security: []
+  /api/v1/users:
+    get:
+      summary: ''
+      operationId: getApiV1Users
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 6
+                  nullable: true
+      security: []
+  /api/v1/chats:
+    get:
+      summary: ''
+      operationId: getApiV1Chats
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 54
+                  nullable: true
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1Chats
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: number
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: 3.543921843
+                  nullable: false
+              required:
+                - userId
+      security: []
+  /api/v1/messages:
+    get:
+      summary: ''
+      operationId: getApiV1Messages
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the chats table.'
+                  example: expedita
+                  nullable: false
+                page:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 70
+                  nullable: true
+              required:
+                - chatId
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1Messages
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: number
+                  description: 'The <code>id</code> of an existing record in the chats table. Must be at least 1.'
+                  example: 65
+                  nullable: false
+                text:
+                  type: string
+                  description: 'Must be at least 1 character.'
+                  example: othlrfcwbzfrsk
+                  nullable: false
+              required:
+                - chatId
+                - text
+      security: []
+  /api/v1/message:
+    get:
+      summary: ''
+      operationId: getApiV1Message
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: number
+                  description: 'The <code>id</code> of an existing record in the chats table.'
+                  example: 70223.12
+                  nullable: false
+                messageId:
+                  type: number
+                  description: 'The <code>id</code> of an existing record in the messages table. Must be at least 0.'
+                  example: 44
+                  nullable: false
+              required:
+                - chatId
+                - messageId
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
