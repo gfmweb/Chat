@@ -12,10 +12,10 @@ readonly class GetFullMessageTextAction
 {
     public function __construct(
         private MessagesRepository $messagesRepository
-    ){
+    ) {
     }
 
-    public function handle(int $chatId, int $messageId):ChatMessageDTO
+    public function handle(int $chatId, int $messageId): ChatMessageDTO
     {
         return $this->messagesRepository->getFullTextMessage($chatId, $messageId, Auth::user()->id);
     }

@@ -33,7 +33,7 @@ class GetUserListRequest extends FormRequest
     {
         return [
             'page.numeric' => __('request.numeric'),
-            'page.min' =>  __('request.min')
+            'page.min' => __('request.min')
         ];
     }
 }

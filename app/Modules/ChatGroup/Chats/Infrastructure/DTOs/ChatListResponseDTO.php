@@ -9,6 +9,6 @@ readonly class ChatListResponseDTO
     public function __construct(
         public Collection $chats,
         public int $code
-    ){
+    ) {
     }
 }

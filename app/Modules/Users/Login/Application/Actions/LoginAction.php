@@ -25,7 +25,7 @@ final readonly class LoginAction
             $user = Auth::loginUsingId($candidate->id);
             $user->tokens()->delete();
             return new TokenDTO(
-                    $user->createToken($candidate->email)->plainTextToken
+                $user->createToken($candidate->email)->plainTextToken
             );
         }
         throw new BadRequestException(__('exceptions.wrongCredentials'), 422);

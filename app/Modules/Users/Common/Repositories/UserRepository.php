@@ -15,6 +15,4 @@ abstract readonly class UserRepository
         protected User $userModel
     ) {
     }
-
-
 }

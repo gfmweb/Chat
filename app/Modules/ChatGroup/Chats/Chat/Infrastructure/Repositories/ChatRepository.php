@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories;
 
 use App\Models\Chat;
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Mappers\UsersChatsMapper;
+use App\Modules\ChatGroup\Chats\Infrastructure\Mappers\UsersChatsMapper;
 use Illuminate\Support\Collection;
 
 readonly class ChatRepository

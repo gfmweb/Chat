@@ -29,7 +29,7 @@ class CreateChatRequest extends FormRequest
         ];
     }
 
-    public function messages():array
+    public function messages(): array
     {
         return [
             'userId.required' => __('request.required'),

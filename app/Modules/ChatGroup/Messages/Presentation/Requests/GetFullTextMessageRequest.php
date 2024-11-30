@@ -41,6 +41,5 @@ class GetFullTextMessageRequest extends FormRequest
             'messageId.min' => __('request.min'),
             'messageId.exists' => __('request.message.exists'),
         ];
-
     }
 }

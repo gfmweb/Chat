@@ -24,6 +24,7 @@ class Chat extends Model
     use HasFactory;
 
     protected $fillable = ['updated_at'];
+
     public function messages(): HasMany
     {
         return $this->HasMany(Message::class);

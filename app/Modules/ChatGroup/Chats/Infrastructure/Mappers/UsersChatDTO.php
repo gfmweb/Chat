@@ -14,6 +14,6 @@ readonly class UsersChatDTO
         public string $chatName,
         public Carbon $timestamp,
         public Collection $users
-    ){
+    ) {
     }
 }

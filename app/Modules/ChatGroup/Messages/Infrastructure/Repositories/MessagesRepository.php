@@ -31,7 +31,7 @@ readonly class MessagesRepository
     public function getFullTextMessage(int $chatId, int $messageId, int $userId): ChatMessageDTO
     {
         return MessagesMapper::fromModel(
-            $this->messageModel::where([['chat_id',  $chatId], ['id', $messageId]])->firstOrFail(),
+            $this->messageModel::where([['chat_id', $chatId], ['id', $messageId]])->firstOrFail(),
             $userId,
             true
         );
@@ -44,7 +44,8 @@ readonly class MessagesRepository
                 'from' => $userId,
                 'message' => $message,
                 'chat_id' => $chatId
-            ]), $userId
+            ]),
+            $userId
         );
     }
 }

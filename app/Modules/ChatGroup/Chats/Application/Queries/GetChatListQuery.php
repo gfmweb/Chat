@@ -23,7 +23,8 @@ readonly class GetChatListQuery
         $page = is_null($page) ? 0 : $page;
         $result = $this->chatRepository->getFullChatsInfo(
             self::getUsersChatsIds($this->userRepository->getUsersChat($userId)),
-            Auth::id(), $page
+            Auth::id(),
+            $page
         );
         $code = $result->count() > 0 ? 200 : 204;
         return new ChatListResponseDTO($result, $code);

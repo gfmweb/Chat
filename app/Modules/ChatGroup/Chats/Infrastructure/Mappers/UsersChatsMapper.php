@@ -9,16 +9,6 @@ use Illuminate\Support\Collection;
 
 readonly class UsersChatsMapper
 {
-    public static function fromModel(Chat $chat, int $userId): UsersChatDTO
-    {
-        return new UsersChatDTO(
-          $chat->id,
-          self::getChatName($chat->users, $userId),
-          $chat->updated_at,
-          self::mapChatUsers($chat->users)
-        );
-    }
-
     /**
      * @param Collection<Chat> $collection
      * @return Collection<UsersChatDTO>
@@ -32,10 +22,20 @@ readonly class UsersChatsMapper
         return $resultCollection;
     }
 
+    public static function fromModel(Chat $chat, int $userId): UsersChatDTO
+    {
+        return new UsersChatDTO(
+            $chat->id,
+            self::getChatName($chat->users, $userId),
+            $chat->updated_at,
+            self::mapChatUsers($chat->users)
+        );
+    }
+
     private static function getChatName(Collection $users, int $userId): string
     {
         foreach ($users as $user) {
-            if($user->id !== $userId) {
+            if ($user->id !== $userId) {
                 return $user->nameFirst . ' ' . $user->nameLast;
             }
         }
@@ -46,12 +46,14 @@ readonly class UsersChatsMapper
     {
         $resultCollection = collect();
         foreach ($users as $user) {
-            $resultCollection->push(new ChatUserDTO(
-                $user->id,
-                $user->nameFirst,
-                $user->nameLast,
-                $user->email
-            ));
+            $resultCollection->push(
+                new ChatUserDTO(
+                    $user->id,
+                    $user->nameFirst,
+                    $user->nameLast,
+                    $user->email
+                )
+            );
         }
         return $resultCollection;
     }

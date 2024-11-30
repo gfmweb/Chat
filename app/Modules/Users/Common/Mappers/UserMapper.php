@@ -10,19 +10,6 @@ use Illuminate\Support\Collection;
 
 class UserMapper
 {
-    /**
-     * @param Collection<User> $collection
-     * @return Collection
-     */
-    /*public static function fromCollection(Collection $collection): Collection
-    {
-        $dtoCollection = collect();
-        foreach ($collection as $user) {
-            $dtoCollection->push(self::fromModel($user));
-        }
-        return $dtoCollection;
-    }*/
-
     public static function fromModel(User $user): UserDTO
     {
         return new UserDTO(
@@ -39,8 +26,8 @@ class UserMapper
         return new UserDTO(
             $data['email'],
             $data['password'],
-            $data['firstName']??null,
-            $data['lastName']??null,
+            $data['firstName'] ?? null,
+            $data['lastName'] ?? null,
             null
         );
     }
