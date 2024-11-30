@@ -6,7 +6,6 @@ namespace App\Modules\ChatGroup\Chats\Chat\Application\Actions;
 
 use App\Modules\ChatGroup\Chats\Chat\Infrastructure\DTOs\CreateChatResponseDTO;
 use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\ChatRepository;
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\MessageRepository;
 use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
@@ -15,12 +14,11 @@ readonly class CreateChatAction
 {
     public function __construct(
         private ChatRepository $chatRepository,
-        private UserRepository $userRepository,
-        private MessageRepository $messageRepository
+        private UserRepository $userRepository
     ) {
     }
 
-    public function handle(int $opponentId)
+    public function handle(int $opponentId): CreateChatResponseDTO
     {
         $opponent = $this->userRepository->getById($opponentId);
         $chatAlreadyExist = $this->checkIsChatAlreadyExists($opponent->chats, Auth::user()->chats);

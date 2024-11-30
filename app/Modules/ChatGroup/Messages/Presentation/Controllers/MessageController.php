@@ -17,24 +17,28 @@ class MessageController extends Controller
 {
     public function postMessage(PostMessageRequest $request, PostMessageAction $action): JsonResponse
     {
-        return response()->json($action->handle(
-            $request->get('chatId'),
-            $request->get('text')
-        ));
+        return response()->json(
+            $action->handle(
+                (int)$request->get('chatId'),
+                $request->get('text')
+            )
+        );
     }
 
     public function getMessages(GetMessagesRequest $request, GetMessagesAction $action): JsonResponse
     {
-        $result = $action->handle($request->get('chatId'), $request->get('position'));
+        $result = $action->handle((int)$request->get('chatId'), (int)$request->get('position'));
         return response()->json($result->messages, $result->code);
     }
 
-    public function getFullTextMessage(GetFullTextMessageRequest $request, GetFullMessageTextAction $action): JsonResponse
-    {
+    public function getFullTextMessage(
+        GetFullTextMessageRequest $request,
+        GetFullMessageTextAction $action
+    ): JsonResponse {
         return response()->json(
             $action->handle(
-                $request->get('chatId'),
-                $request->get('messageId')
+                (int)$request->get('chatId'),
+                (int)$request->get('messageId')
             )
         );
     }

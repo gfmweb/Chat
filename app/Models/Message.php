@@ -15,6 +15,8 @@ use Illuminate\Support\Carbon;
  * @property string $message
  * @property Carbon $created_at
  * @property int $chat_id
+ * @method static where
+ * @method create(array $array)
  */
 class Message extends Model
 {

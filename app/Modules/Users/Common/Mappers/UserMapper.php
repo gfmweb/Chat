@@ -14,14 +14,14 @@ class UserMapper
      * @param Collection<User> $collection
      * @return Collection
      */
-    public static function fromCollection(Collection $collection): Collection
+    /*public static function fromCollection(Collection $collection): Collection
     {
         $dtoCollection = collect();
         foreach ($collection as $user) {
             $dtoCollection->push(self::fromModel($user));
         }
         return $dtoCollection;
-    }
+    }*/
 
     public static function fromModel(User $user): UserDTO
     {

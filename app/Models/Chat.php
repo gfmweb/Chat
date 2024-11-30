@@ -16,6 +16,8 @@ use Illuminate\Support\Collection;
  * @property int $id
  * @property Carbon $updated_at
  * @property Collection $users
+ * @method create(array $array)
+ * @method whereIn(string $string, Collection $ids)
  */
 class Chat extends Model
 {

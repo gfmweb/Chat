@@ -16,12 +16,12 @@ class ChatController extends Controller
 {
     public function getChatList(GetChatListQuery $chatListQuery, GetUsersChatListRequest $request): JsonResponse
     {
-        return response()->json($chatListQuery->handle(Auth::user()->id, $request->get('position')));
+        return response()->json($chatListQuery->handle(Auth::user()->id, (int)$request->get('position')));
     }
 
     public function createChat(CreateChatRequest $request, CreateChatAction $action): JsonResponse
     {
-        $result = $action->handle($request->get('userId'));
+        $result = $action->handle((int)$request->get('userId'));
         return response()->json(['chatId' => $result->chatId], $result->code);
     }
 }

@@ -19,6 +19,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $id
  * @method static where(string $column, string $condition, string $value)
  * @method create(array $data)
+ * @method find(int $userId)
  */
 class User extends Authenticatable
 {
@@ -50,11 +51,6 @@ class User extends Authenticatable
     public function chats(): belongsToMany
     {
         return $this->belongsToMany(Chat::class, 'chat_user');
-    }
-
-    public function getFullName(): string
-    {
-        return "{$this->nameFirst} {$this->nameLast}";
     }
 
     /**

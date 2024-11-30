@@ -15,7 +15,7 @@ readonly class UsersChatsMapper
           $chat->id,
           self::getChatName($chat->users, $userId),
           $chat->updated_at,
-          self::mapChatUsers($chat->users, $userId)
+          self::mapChatUsers($chat->users)
         );
     }
 
@@ -42,7 +42,7 @@ readonly class UsersChatsMapper
         return 'Избранное';
     }
 
-    private static function mapChatUsers(Collection $users, int $userId): Collection
+    private static function mapChatUsers(Collection $users): Collection
     {
         $resultCollection = collect();
         foreach ($users as $user) {

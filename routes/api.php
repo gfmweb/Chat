@@ -19,9 +19,9 @@ Route::prefix('v1')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('users', [UsersListController::class, 'list']);
+        Route::get('chats', [ChatController::class, 'getChatList']);
+        Route::post('chats', [ChatController::class, 'createChat']);
         Route::middleware(ChatAccessMiddleware::class)->group(function(){
-            Route::get('chats', [ChatController::class, 'getChatList']);
-            Route::post('chats', [ChatController::class, 'createChat']);
             Route::get('messages', [MessageController::class, 'getMessages']);
             Route::post('messages', [MessageController::class, 'postMessage']);
             Route::get('message', [MessageController::class, 'getFullTextMessage']);

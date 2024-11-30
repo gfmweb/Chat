@@ -15,10 +15,6 @@ readonly class ChatRepository
     ) {
     }
 
-    public function getChat(int $ownerId, int $opponentId)
-    {
-    }
-
     public function createChat(int $ownerId, int $opponentId): int
     {
         $chat = $this->chatModel->create([]);
@@ -38,6 +34,4 @@ readonly class ChatRepository
             $userId
         );
     }
-
-
 }
