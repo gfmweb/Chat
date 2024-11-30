@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('from')->comment('От кого');
             $table->unsignedBigInteger('chat_id')->comment('В чате');
-            $table->string('message')->comment('Текст сообщения');
+            $table->text('message')->comment('Текст сообщения');
             $table->timestamps();
 
             $table->foreign('from')->references('id')->on('users');
