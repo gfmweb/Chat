@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories;
+namespace App\Modules\ChatGroup\Chats\Infrastructure\Repositories;
 
 use App\Models\User;
 use Illuminate\Support\Collection;

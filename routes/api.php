@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Middleware\ChatAccessMiddleware;
+use App\Modules\ChatGroup\Chats\Presentation\Controllers\ChatController;
+use App\Modules\ChatGroup\Messages\Presentation\Controllers\MessageController;
 use App\Modules\Users\Login\Presentation\Controllers\LoginController;
 use App\Modules\Users\Register\Presentation\Controllers\RegisterController;
-use Illuminate\Support\Facades\Route;
 use App\Modules\Users\UsersList\Presentation\Controllers\UsersListController;
-use App\Http\Middleware\ChatAccessMiddleware;
-use App\Modules\ChatGroup\Chats\Chat\Presentation\Controllers\ChatController;
-use App\Modules\ChatGroup\Messages\Presentation\Controllers\MessageController;
+use Illuminate\Support\Facades\Route;
 
 //Route::get('/user', function (Request $request) {
 //    return $request->user();

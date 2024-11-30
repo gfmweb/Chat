@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Application\Actions;
+namespace App\Modules\ChatGroup\Chats\Application\Actions;
 
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\DTOs\CreateChatResponseDTO;
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\ChatRepository;
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\UserRepository;
-use Illuminate\Support\Facades\Auth;
+use App\Modules\ChatGroup\Chats\Infrastructure\DTOs\CreateChatResponseDTO;
+use App\Modules\ChatGroup\Chats\Infrastructure\Repositories\ChatRepository;
+use App\Modules\ChatGroup\Chats\Infrastructure\Repositories\UserRepository;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 readonly class CreateChatAction
 {

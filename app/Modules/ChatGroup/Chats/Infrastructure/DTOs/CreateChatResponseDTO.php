@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Infrastructure\DTOs;
+namespace App\Modules\ChatGroup\Chats\Infrastructure\DTOs;
 
 readonly class CreateChatResponseDTO
 {

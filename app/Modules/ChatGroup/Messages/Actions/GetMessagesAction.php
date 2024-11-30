@@ -15,12 +15,11 @@ readonly class GetMessagesAction
     ) {
     }
 
-    public function handle(int $chatId, ?int $position): ChatMessagesResponseDTO
+    public function handle(int $chatId, ?int $page): ChatMessagesResponseDTO
     {
-        $position = is_null($position) ? 0 : $position;
-        $response = $this->messagesRepository->getMessages($chatId, Auth::user()->id, $position);
-        return $response->count() > 0 ? new ChatMessagesResponseDTO($response, 200) : new ChatMessagesResponseDTO(
-            $response, 204
-        );
+        $page = is_null($page) ? 0 : $page;
+        $response = $this->messagesRepository->getMessages($chatId, Auth::user()->id, $page);
+        $code = $response->count() > 0 ? 200 : 204;
+        return new ChatMessagesResponseDTO($response, $code);
     }
 }

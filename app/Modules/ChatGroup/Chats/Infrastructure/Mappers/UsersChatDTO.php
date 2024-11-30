@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Infrastructure\Mappers;
+namespace App\Modules\ChatGroup\Chats\Infrastructure\Mappers;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;

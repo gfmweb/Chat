@@ -29,4 +29,18 @@ class GetFullTextMessageRequest extends FormRequest
             'messageId' => 'required|numeric|min:0|exists:messages,id'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'chatId.required' => __('request.required'),
+            'chatId.numeric' => __('request.numeric'),
+            'chatId.exists' => __('request.chat.exists'),
+            'messageId.required' => __('request.required'),
+            'messageId.numeric' => __('request.numeric'),
+            'messageId.min' => __('request.min'),
+            'messageId.exists' => __('request.message.exists'),
+        ];
+
+    }
 }

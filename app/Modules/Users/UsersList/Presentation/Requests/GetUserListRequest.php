@@ -25,14 +25,15 @@ class GetUserListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'position' => 'numeric|nullable'
+            'page' => 'numeric|min:0|nullable'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'position.numeric' => __('request.numeric')
+            'page.numeric' => __('request.numeric'),
+            'page.min' =>  __('request.min')
         ];
     }
 }

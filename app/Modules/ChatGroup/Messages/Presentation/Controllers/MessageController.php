@@ -27,7 +27,7 @@ class MessageController extends Controller
 
     public function getMessages(GetMessagesRequest $request, GetMessagesAction $action): JsonResponse
     {
-        $result = $action->handle((int)$request->get('chatId'), (int)$request->get('position'));
+        $result = $action->handle((int)$request->get('chatId'), (int)$request->get('page'));
         return response()->json($result->messages, $result->code);
     }
 

@@ -11,6 +11,6 @@ readonly class UserRepository extends RepositoryCommon
 {
     public function getUsersList(int $offset, int $limit): Collection
     {
-        return $this->userModel->offset($offset)->limit($limit)->get();
+        return $this->userModel::offset($offset)->limit($limit)->get();
     }
 }

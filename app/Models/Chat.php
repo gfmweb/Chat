@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Database\Factories\ChatFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -24,7 +23,7 @@ class Chat extends Model
     /** @use HasFactory<ChatFactory> */
     use HasFactory;
 
-
+    protected $fillable = ['updated_at'];
     public function messages(): HasMany
     {
         return $this->HasMany(Message::class);

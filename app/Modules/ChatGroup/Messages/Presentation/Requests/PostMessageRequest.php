@@ -25,8 +25,21 @@ class PostMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'chatId' => 'required|exists:chats,id',
+            'chatId' => 'required|numeric|min:1|exists:chats,id',
             'text' => 'required|string|min:1'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'chatId.required' => __('request.required'),
+            'chatId.numeric' => __('request.numeric'),
+            'chatId.min' => __('request.min'),
+            'chatId.exists' => __('request.chat.exists'),
+            'test.required' => __('request.required'),
+            'text.string' => __('request.string'),
+            'text.min' => __('request.min')
         ];
     }
 }

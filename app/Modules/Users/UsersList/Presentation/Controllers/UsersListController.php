@@ -13,7 +13,7 @@ class UsersListController extends Controller
 {
     public function list(GetUserListRequest $request, UsersListQuery $listQuery): JsonResponse
     {
-        $result = $listQuery->handle( (int) $request->get('position'));
+        $result = $listQuery->handle( (int) $request->get('page'));
         return response()->json($result->users, $result->code);
     }
 }

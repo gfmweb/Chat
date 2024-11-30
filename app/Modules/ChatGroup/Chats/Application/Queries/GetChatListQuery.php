@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Application\Queries;
+namespace App\Modules\ChatGroup\Chats\Application\Queries;
 
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\ChatRepository;
-use App\Modules\ChatGroup\Chats\Chat\Infrastructure\Repositories\UserRepository;
+use App\Modules\ChatGroup\Chats\Infrastructure\DTOs\ChatListResponseDTO;
+use App\Modules\ChatGroup\Chats\Infrastructure\Repositories\ChatRepository;
+use App\Modules\ChatGroup\Chats\Infrastructure\Repositories\UserRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,13 +18,15 @@ readonly class GetChatListQuery
     ) {
     }
 
-    public function handle(int $userId, ?int $position = 0): Collection
+    public function handle(int $userId, ?int $page = 0): ChatListResponseDTO
     {
-        $position = is_null($position) ? 0 : $position;
-        return $this->chatRepository->getFullChatsInfo(
+        $page = is_null($page) ? 0 : $page;
+        $result = $this->chatRepository->getFullChatsInfo(
             self::getUsersChatsIds($this->userRepository->getUsersChat($userId)),
-            Auth::id(), $position
+            Auth::id(), $page
         );
+        $code = $result->count() > 0 ? 200 : 204;
+        return new ChatListResponseDTO($result, $code);
     }
 
     private function getUsersChatsIds(Collection $usersChats): Collection

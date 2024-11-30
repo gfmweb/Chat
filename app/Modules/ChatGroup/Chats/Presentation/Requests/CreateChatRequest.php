@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChatGroup\Chats\Chat\Presentation\Requests;
+namespace App\Modules\ChatGroup\Chats\Presentation\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetUsersChatListRequest extends FormRequest
+class CreateChatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,16 @@ class GetUsersChatListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'position' => 'numeric|nullable|min:0'
+            'userId' => 'required|numeric|exists:users,id',
         ];
     }
 
-    public function messages(): array
+    public function messages():array
     {
         return [
-            'position.numeric' => __('request.numeric'),
-            'position.min' => __('request.min')
+            'userId.required' => __('request.required'),
+            'userId.numeric' => __('request.numeric'),
+            'userId.exists' => __('request.createChat.exists'),
         ];
     }
 }

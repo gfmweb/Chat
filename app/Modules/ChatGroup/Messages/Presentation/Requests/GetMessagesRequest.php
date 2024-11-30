@@ -26,7 +26,17 @@ class GetMessagesRequest extends FormRequest
     {
         return [
             'chatId' => 'required|exists:chats,id',
-            'position' => 'numeric|nullable|min:0',
+            'page' => 'numeric|min:0|nullable',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'chatId.required' => __('request.required'),
+            'chatId.exists' => __('request.chat.exists'),
+            'page.numeric' => __('request.numeric'),
+            'page.min' => __('request.min')
         ];
     }
 }

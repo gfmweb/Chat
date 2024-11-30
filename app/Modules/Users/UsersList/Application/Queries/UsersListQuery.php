@@ -17,12 +17,12 @@ readonly class UsersListQuery
     ) {
     }
 
-    public function handle(?int $position): UserListResponseDTO
+    public function handle(?int $page): UserListResponseDTO
     {
-        $position = (int)$position * config('listlimit.value');
+        $page = (int)$page * config('listlimit.value');
         $limit = config('listlimit.value');
         $list = UserListMapper::fromCollection(
-            $this->userRepository->getUsersList($position, $limit),
+            $this->userRepository->getUsersList($page, $limit),
             Auth::user()->id
         );
         $code = $list->count() > 0 ? 200 : 204;
