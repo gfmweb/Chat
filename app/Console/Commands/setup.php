@@ -30,6 +30,7 @@ class setup extends Command
         $this->info('Начальная настройка проекта');
         $this->call('migrate');
         $this->call('DB:seed');
+        $this->call('test');
         $user = User::latest()->pluck('email');
         $this->info('Для авторизации воспользуйтесь следующими учетными данными:');
         $this->info('email: ' . $user[0]);
